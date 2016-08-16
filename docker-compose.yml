@@ -1,0 +1,4 @@
+basickoaframework:
+  image: vincentlinsanity/basicexpressframework:latest
+  ports:
+    - "3000:3000"
