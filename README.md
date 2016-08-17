@@ -38,10 +38,16 @@ run server
 $ npm start
 ```
 
+# Build Docker Images
+```bash
+$ make docker-build
+$ docker run -d -p 80:3000 vincentlinsanity/basickoaframework:latest
+```
+
 # Quick Start by Docker
 get docker-compose file
 ```bash
-$ mkdir -p /home/docker/compose/basic-koa-framework
+$ mkdir -p /home/docker/compose/basic-koa-framework/mongo
 $ wget https://raw.githubusercontent.com/vincentlinsanity/basic-koa-framework/master/docker-compose.yml
 ```
 
@@ -63,20 +69,12 @@ basickoaframework:
   ports:
     - "80:3000"
 mongo:
-  image: vincentlinsanity/mongodb:3.0.7
+  image: mongodb:3.0.7
   expose:
     - 27017
   volumes:
-    - '/home/docker/compose/meta/data/mongo:/data/db'
+    - '/home/docker/compose/meta/basic-koa-framework/mongo:/data/db'
 ```
 ## environment example
 - MONGO_ADDR = '10.36.62.101';
 - MONGO_PORT = 27017;
-- REDIS_ADDR = '10.36.62.101';
-- REDIS_PORT = 6379;
-
-# Build Docker Images
-```bash
-$ make docker-build
-$ docker run -d -p 80:3000 vincentlin/basickoaframework:latest
-```
